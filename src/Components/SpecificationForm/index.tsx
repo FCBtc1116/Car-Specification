@@ -19,10 +19,10 @@ const SpecificationFormSchema = Yup.object().shape({
 });
 
 const SpecificationForm = (props: {
-  specificationData: Array<object>;
-  savedCheckboxList: Array<string>;
-  setSavedCheckboxList: (item: Array<string>) => void;
-  addSecificationData: (item: object) => void;
+  specificationData: object[];
+  savedCheckboxList: string[];
+  onSetSavedCheckboxList: (item: string[]) => void;
+  onAddSecificationData: (item: object) => void;
 }) => {
   const [checkboxList, setCheckboxList] = useState(props.savedCheckboxList);
 
@@ -49,8 +49,8 @@ const SpecificationForm = (props: {
           }}
           validationSchema={SpecificationFormSchema}
           onSubmit={(values, actions) => {
-            props.setSavedCheckboxList(checkboxList);
-            props.addSecificationData(JSON.parse(JSON.stringify(values)));
+            props.onSetSavedCheckboxList(checkboxList);
+            props.onAddSecificationData(JSON.parse(JSON.stringify(values)));
             actions.resetForm();
             // resetForm();
             actions.setSubmitting(false);
@@ -72,9 +72,7 @@ const SpecificationForm = (props: {
               <SelectForm name="wheel_type" data={WheelTypes} />
               <div className="grid grid-cols-3">
                 {checkboxList.map((list: string, _index: number) => {
-                  return (
-                    <CheckBoxForm label={list} name={_index} key={_index} />
-                  );
+                  return <CheckBoxForm label={list} name={_index} key={list} />;
                 })}
               </div>
               <p className="mt-[25px]">Signaure on hood</p>
@@ -100,7 +98,7 @@ const SpecificationForm = (props: {
             </Form>
           )}
         </Formik>
-        <Modal addCheckboxList={addCheckboxList} />
+        <Modal onAddCheckboxList={addCheckboxList} />
       </div>
     </div>
   );

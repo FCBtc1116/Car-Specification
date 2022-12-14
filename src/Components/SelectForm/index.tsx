@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Field } from "formik";
 
-const SelectForm = (props: { name: string; data: Array<string> }) => {
+const SelectForm = (props: { name: string; data: string[] }) => {
   return (
     <Field
       as="select"
@@ -10,7 +10,7 @@ const SelectForm = (props: { name: string; data: Array<string> }) => {
     >
       {props.data.map((item: string, _index: number) => {
         return (
-          <option value={item} key={_index}>
+          <option value={item} key={item}>
             {item}
           </option>
         );

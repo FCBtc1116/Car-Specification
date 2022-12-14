@@ -6,7 +6,7 @@ const ModalSchema = Yup.object().shape({
   name: Yup.string().required("Required"),
 });
 
-const Modal = (props: { addCheckboxList: (item: string) => void }) => {
+const Modal = (props: { onAddCheckboxList: (item: string) => void }) => {
   return (
     <Formik
       initialValues={{
@@ -14,7 +14,7 @@ const Modal = (props: { addCheckboxList: (item: string) => void }) => {
       }}
       validationSchema={ModalSchema}
       onSubmit={(values, actions) => {
-        props.addCheckboxList(values.name);
+        props.onAddCheckboxList(values.name);
         actions.setSubmitting(false);
       }}
     >

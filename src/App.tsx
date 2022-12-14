@@ -7,7 +7,7 @@ function App() {
   const [savedCheckboxList, setSavedCheckboxList] = useState([
     "Air Suspension",
   ]);
-  const [specificationData, setSpecificationData] = useState<Array<object>>([
+  const [specificationData, setSpecificationData] = useState<object[]>([
     {
       name: "Sport",
       engine: "V6 3.5 L",
@@ -57,8 +57,8 @@ function App() {
         <SpecificationForm
           savedCheckboxList={savedCheckboxList}
           specificationData={specificationData}
-          setSavedCheckboxList={setSavedCheckboxList}
-          addSecificationData={addSecificationData}
+          onSetSavedCheckboxList={setSavedCheckboxList}
+          onAddSecificationData={addSecificationData}
         />
       </div>
     </div>

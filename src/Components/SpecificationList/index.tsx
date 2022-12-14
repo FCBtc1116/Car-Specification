@@ -5,8 +5,8 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 const SepcificationList = (props: {
-  specificationData: Array<object>;
-  savedCheckboxList: Array<string>;
+  specificationData: object[];
+  savedCheckboxList: string[];
 }) => {
   const [open, setOpen] = useState(0);
 
@@ -20,7 +20,10 @@ const SepcificationList = (props: {
         <Fragment>
           {props.specificationData.map((item, _index: number) => {
             return (
-              <Accordion open={open === _index} key={_index}>
+              <Accordion
+                open={open === _index}
+                key={JSON.parse(JSON.stringify(item)).name}
+              >
                 <AccordionHeader onClick={() => handleOpen(_index)}>
                   {JSON.parse(JSON.stringify(item)).name}
                 </AccordionHeader>
@@ -37,10 +40,10 @@ const SepcificationList = (props: {
                     JSON.parse(JSON.stringify(item)).wheel_type
                   }{" "}
                   <br />
-                  {props.savedCheckboxList.map((checkList, _index) => {
+                  {props.savedCheckboxList.map((checkItem, _index) => {
                     return (
-                      <label key={_index}>
-                        {checkList} -{" "}
+                      <label key={checkItem}>
+                        {checkItem} -{" "}
                         {JSON.parse(JSON.stringify(item))[`checkbox_${_index}`]
                           ? JSON.parse(JSON.stringify(item))[
                               `checkbox_${_index}`

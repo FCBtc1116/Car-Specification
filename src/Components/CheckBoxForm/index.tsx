@@ -1,13 +1,17 @@
-import { memo } from "react";
-import { Field } from "formik";
+import { ChangeEvent, memo } from "react";
 
-const CehckBoxForm = (props: { name: number; label: string }) => {
+const CehckBoxForm = (props: {
+  name: number;
+  label: string;
+  onHandleChange: (e: ChangeEvent<any>) => void;
+}) => {
   return (
     <label className="mr-[10px]">
-      <Field
-        type="checkbox"
+      <input
         name={"checkbox_" + props.name}
+        type="checkbox"
         className="mr-[10px] mt-[25px]"
+        onChange={props.onHandleChange}
       />
       {props.label}
     </label>

@@ -1,11 +1,18 @@
-import { memo } from "react";
-import { Field } from "formik";
+import { ChangeEvent, memo } from "react";
 
-const SelectForm = (props: { name: string; data: string[] }) => {
+const SelectForm = (props: {
+  name: string;
+  data: string[];
+  values: object;
+  onHandleChange: (e: ChangeEvent<any>) => void;
+  onHandleBlur: (e: ChangeEvent<any>) => void;
+}) => {
   return (
-    <Field
-      as="select"
+    <select
       name={props.name}
+      value={JSON.parse(JSON.stringify(props.values))[props.name]}
+      onChange={props.onHandleChange}
+      onBlur={props.onHandleBlur}
       className="block w-full mt-[25px] border-2 rounded-sm"
     >
       {props.data.map((item: string, _index: number) => {
@@ -15,7 +22,7 @@ const SelectForm = (props: { name: string; data: string[] }) => {
           </option>
         );
       })}
-    </Field>
+    </select>
   );
 };
 

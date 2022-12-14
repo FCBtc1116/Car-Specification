@@ -7,6 +7,7 @@ import {
 const SepcificationList = (props: {
   specificationData: object[];
   savedCheckboxList: string[];
+  onNewSpecification: (newSpec: boolean) => void;
 }) => {
   const [open, setOpen] = useState(0);
 
@@ -62,7 +63,12 @@ const SepcificationList = (props: {
             );
           })}
         </Fragment>
-        <button className="border-2 mt-[20px] mb-[20px]">
+        <button
+          className="border-2 mt-[20px] mb-[20px]"
+          onClick={() => {
+            props.onNewSpecification(true);
+          }}
+        >
           + Make new specification
         </button>
       </div>

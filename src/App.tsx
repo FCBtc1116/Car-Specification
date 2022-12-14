@@ -39,6 +39,7 @@ function App() {
       signature: "Furious and Safe",
     },
   ]);
+  const [isNewSpecification, setIsNewSpecification] = useState(false);
 
   const addSecificationData = useCallback(
     (item: object) => {
@@ -53,12 +54,15 @@ function App() {
         <SpecificationList
           savedCheckboxList={savedCheckboxList}
           specificationData={specificationData}
+          onNewSpecification={setIsNewSpecification}
         />
         <SpecificationForm
           savedCheckboxList={savedCheckboxList}
           specificationData={specificationData}
+          isNewSpecification={isNewSpecification}
           onSetSavedCheckboxList={setSavedCheckboxList}
           onAddSecificationData={addSecificationData}
+          onNewSpecification={setIsNewSpecification}
         />
       </div>
     </div>

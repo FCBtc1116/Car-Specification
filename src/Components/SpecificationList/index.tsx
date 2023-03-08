@@ -56,7 +56,7 @@ const SepcificationList = (props: {
                       </label>
                     );
                   })}
-                  Signature on hood -{" "}
+                  Signature
                   {JSON.parse(JSON.stringify(item)).signature} <br />
                 </AccordionBody>
               </Accordion>

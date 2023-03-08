@@ -38,6 +38,27 @@ function App() {
       checkbox_0: true,
       signature: "Furious and Safe",
     },
+    {
+      name: "Standart",
+      engine: "V5 3.1 L",
+      material: "Coal",
+      color: "Green",
+      wheel_inchi: "18 inches",
+      wheel_type: "TSB",
+      checkbox_0: true,
+      signature: "Furious and Safe",
+    },
+
+    {
+      name: "Standart",
+      engine: "V5 3.1 L",
+      material: "Coal",
+      color: "Green",
+      wheel_inchi: "18 inches",
+      wheel_type: "TSB",
+      checkbox_0: true,
+      signature: "Furious and Safe",
+    },
   ]);
   const [isNewSpecification, setIsNewSpecification] = useState(false);
 
